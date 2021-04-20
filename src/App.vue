@@ -1,31 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      132123123
-    </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
+  import {AppUtil} from "./utils/app-util";
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  export default {
+    name: 'app',
+    components: {},
+    created() {
+      AppUtil.init(this.$bus)
     }
   }
-}
+</script>
+
+<style>
 </style>

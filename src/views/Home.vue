@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <test style="margin-bottom: 20px;"/>
+    <table-drag-test/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  import Test from "./test/test";
+  import TableDragTest from "@/views/test/table-drag-test";
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'Home',
+    components: {TableDragTest, Test},
+    created() {
+    },
+    mounted() {
+    },
+    methods: {}
   }
-}
 </script>
