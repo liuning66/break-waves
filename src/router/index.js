@@ -8,9 +8,15 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: "test/:id",
+        component: () => import("@/views/test/router-test")
+      }
+    ]
   },
-]
+];
 
 const router = new VueRouter({
   mode: 'history',

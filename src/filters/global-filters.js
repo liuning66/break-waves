@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import moment from "moment"
 
-Vue.filter("date", (date, format = "yyyy-MM-dd") => {
+Vue.filter("dataFormat", (date, format = "yyyy-MM-dd") => {
   date = new Date(date);
   if (date == 'Invalid Date') {
     throw new Error("传入的时间格式不正确!");
@@ -39,9 +39,11 @@ function padStart(value, maxLength = 2, fillStr = "0") {
   return value.padStart(maxLength, fillStr)
 }
 
-Vue.filter("datePlus", (date, dateFormat = 'yyyy-MM-DD') => {
+Vue.filter("dataFormatPlus", (date, dateFormat = 'yyyy-MM-DD') => {
   if (!moment(date).isValid()) {
     throw new Error("日期格式不正确")
   }
   return moment(date).format(dateFormat);
 });
+
+
