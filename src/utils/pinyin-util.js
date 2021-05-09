@@ -811,7 +811,14 @@ export class PinyinUtil {
   }
 
   static convertToInitials(target) {
-    // todo
+    if (typeof target !== 'string') {
+      throw new Error("传入得参数类型不正确!");
+    }
+    /** 获取target中汉字首字母组成得数组 */
+    const result = target.split("")
+      .map(strItem => PinyinUtil.getCharInitials(strItem));
+    /** 处理result，返回所有可能得结果 */
+    return handleInitialsResultList(result);
   }
 
 
@@ -828,4 +835,51 @@ export class PinyinUtil {
     }
     return null;
   }
+
+  /**
+   * 获取字符得首字母
+   * @param char
+   */
+  static getCharInitials(char) {
+    /** 获取Unicode编码 */
+    const uni = char.charCodeAt(0);
+    /** 如果unicode编码不在中文编码范围内，则直接返回 */
+    if (uni > 40869 || uni < 19968) {
+      return char;
+    }
+    /** 检查是否是多音字，是多音字就按多音字处理，不是多音字就直接在strChineseFirstPY中查找对应得首字母 */
+    return (oMultiDiff[uni] ? oMultiDiff[uni] : (strChineseFirstPY.charAt(uni - 19968)));
+  }
+}
+
+/**
+ * 处理首字母数组
+ * @param arr
+ * @returns {[string]}
+ */
+function handleInitialsResultList(arr) {
+  let arrRslt = [""];
+  for (let i = 0, len = arr.length; i < len; i++) {
+    let str = arr[i];
+    let strlen = str.length;
+    if (strlen == 1) {
+      for (let k = 0; k < arrRslt.length; k++) {
+        arrRslt[k] += str;
+      }
+    } else {
+      let tmpArr = arrRslt.slice(0);
+      arrRslt = [];
+      for (let k = 0; k < strlen; k++) {
+        //复制一个相同的arrRslt
+        let tmp = tmpArr.slice(0);
+        //把当前字符str[k]添加到每个元素末尾
+        for (let j = 0; j < tmp.length; j++) {
+          tmp[j] += str.charAt(k);
+        }
+        //把复制并修改后的数组连接到arrRslt上
+        arrRslt = arrRslt.concat(tmp);
+      }
+    }
+  }
+  return arrRslt;
 }
