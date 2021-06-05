@@ -15,6 +15,7 @@
 <script>
   import Pinyin from "@/assets/pinyin-util";
   import {CloneUtil} from "@/utils/clone-util";
+  import {PinyinUtil} from "@/utils/pinyin-util";
 
   export default {
     name: "pinyin-select",
@@ -37,6 +38,7 @@
       }
     },
     created() {
+      console.log(PinyinUtil.convertToInitials("中华人民共和国"));;
       console.log(this.selectList);
     },
     methods: {

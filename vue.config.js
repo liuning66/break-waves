@@ -7,6 +7,14 @@
 const path = require("path");
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 module.exports = {
+    devServer:{
+        proxy:{
+            "/a":{
+                target:"xxx",
+
+            }
+        }
+    },
     lintOnSave:false,
     chainWebpack: config => {
         config.plugin("provide").use(MomentLocalesPlugin, [{
