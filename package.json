@@ -16,6 +16,7 @@
     "moment": "^2.29.1",
     "moment-locales-webpack-plugin": "^1.2.0",
     "pinyin": "^2.10.2",
+    "resize-observer-polyfill": "^1.5.1",
     "sortable": "^2.0.0",
     "sortablejs": "^1.13.0",
     "vue": "^2.6.11",

@@ -41,7 +41,7 @@ export default {
       curNow: +new Date(1997, 9, 3),
       someDay: 24 * 3600 * 1000,
       curValue: Math.random() * 1000,
-      showEcharts: true
+      showEcharts: false
     }
   },
   mounted() {
@@ -148,19 +148,19 @@ export default {
         },
         dataZoom: [{
           type: 'slider',
-          dataBackground:{
-            lineStyle:{
-              color:'red',
+          dataBackground: {
+            lineStyle: {
+              color: 'red',
               shadowColor: '#000',
-              shadowOffsetY:2,
-              shadowOffsetX:1,
+              shadowOffsetY: 2,
+              shadowOffsetX: 1,
               shadowBlur: 50
             },
-            areaStyle:{
-              color:"rgba(255,0,0,.5)",
-              shadowColor:"#000",
-              shadowOffsetY:-2,
-              shadowOffsetX:1,
+            areaStyle: {
+              color: "rgba(255,0,0,.5)",
+              shadowColor: "#000",
+              shadowOffsetY: -2,
+              shadowOffsetX: 1,
               shadowBlur: 10
             }
           }
@@ -261,7 +261,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 #echarts-line {
   width: 100%;
   height: 90vh;
@@ -282,5 +282,9 @@ export default {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+}
+
+::v-deep .el-table th {
+  background-color: #000 !important;
 }
 </style>
